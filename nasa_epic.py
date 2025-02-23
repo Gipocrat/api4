@@ -5,9 +5,10 @@ from dotenv import load_dotenv
 import os
 
 
-def epic_image(nasa_token):
+def get_epic_image(nasa_token):
     epic_url = 'https://api.nasa.gov/EPIC/api/natural/images'
-    params = {"api_key": nasa_token, 'count': 5}
+    count = int(input('Введите количество изображений: '))
+    params = {"api_key": nasa_token, 'count': count}
     response = requests.get(epic_url, params=params)
     nasa_images = response.json()
     response.raise_for_status()
@@ -15,15 +16,15 @@ def epic_image(nasa_token):
         epic_name = epic_image['image']
         epic_date = epic_image['date']
         epic_date = datetime.datetime.fromisoformat(epic_date).strftime('%Y/%m/%d')
-        epic_image_link = f'https://api.nasa.gov/EPIC/archive/natural/{epic_date}/png/{epic_name}.png?api_key={nasa_token}'
-        download_image(epic_image_link, f'{epic_name}.png')
+        epic_image_link = f'https://api.nasa.gov/EPIC/archive/natural/{epic_date}/png/{epic_name}.png'
+        download_image(epic_image_link, f'{epic_name}.png', params)
 
 
 
 def main(): 
     load_dotenv()
     nasa_token = os.environ["NASA_TOKEN"]
-    epic_image(nasa_token)
+    get_epic_image(nasa_token)
 
     
 if __name__ == "__main__":
