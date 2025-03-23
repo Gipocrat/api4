@@ -2,7 +2,7 @@ import requests
 import os
 
 
-def download_image(url, filename, folder='images', params=None):
+def download_image(url, filename, folder=os.environ.get("FOLDER_NAME", "images"), params=None):
     os.makedirs(folder, exist_ok=True)
     response = requests.get(url, params=params)
     response.raise_for_status()
