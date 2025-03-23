@@ -15,7 +15,7 @@ def fetch_spacex_last_launch(launch_id):
 
 def main(): 
     load_dotenv()
-    launch_id=os.environ["LAUNCH_ID"]
+    launch_id=os.environ["SPACEX_LAUNCH_ID"]
     fetch_spacex_last_launch(launch_id)
 
 

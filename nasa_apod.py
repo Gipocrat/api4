@@ -28,7 +28,7 @@ def get_apod_image(nasa_token, count):
 
 def main(): 
     load_dotenv()
-    count=os.environ["COUNT"]
+    count=os.environ["NASA_COUNT_IMAGE"]
     nasa_token = os.environ["NASA_TOKEN"]
     get_apod_image(nasa_token, count)
 

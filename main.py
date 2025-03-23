@@ -10,7 +10,7 @@ def main():
     bot = telegram.Bot(token=os.environ["TG_TOKEN"])
     chat_id=os.environ["TG_CHAT_ID"]
     bot.send_message(chat_id=chat_id, text="пиривета! меня зовут федарчик и я уметь скачивать картинки космос")
-    time_sleep=os.environ["TIME_SLEEP"]
+    time_sleep=os.environ["TG_TIME_SLEEP"]
 
     while True:
         folder_name= os.environ["FOLDER_NAME"]

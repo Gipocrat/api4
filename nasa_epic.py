@@ -22,7 +22,7 @@ def get_epic_image(nasa_token, count):
 def main(): 
     load_dotenv()
     nasa_token = os.environ["NASA_TOKEN"]
-    count=os.environ["COUNT"]
+    count=os.environ["NASA_COUNT_IMAGE"]
     get_epic_image(nasa_token, count)
 
     
