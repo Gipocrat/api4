@@ -10,10 +10,10 @@ def main():
     bot = telegram.Bot(token=os.environ["TG_TOKEN"])
     chat_id=os.environ["TG_CHAT_ID"]
     bot.send_message(chat_id=chat_id, text="пиривета! меня зовут федарчик и я уметь скачивать картинки космос")
-    time_sleep=os.environ["TG_TIME_SLEEP"]
+    time_sleep=os.environ.get("TG_TIME_SLEEP", 14400)
 
     while True:
-        folder_name= os.environ["FOLDER_NAME"]
+        folder_name= os.environ.get("FOLDER_NAME", "images")
         files=os.listdir(folder_name)
         random.shuffle(files)
         for file in files:
