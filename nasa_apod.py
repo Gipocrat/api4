@@ -13,7 +13,7 @@ def get_extension(url):
     return filename, extension
 
 
-def get_apod_image(nasa_token, count):
+def get_apod_image(nasa_token, count, folder_name):
     nasa_url = 'https://api.nasa.gov/planetary/apod'
     params = {"api_key": nasa_token, 'count': count}
     response = requests.get(nasa_url, params=params)
@@ -23,14 +23,16 @@ def get_apod_image(nasa_token, count):
         if nasa_image.get('media_type') == 'image':
             nasa_link_image = nasa_image.get('hdurl') or nasa_image.get('url') 
         filename, extension = get_extension(nasa_link_image)
-        download_image(nasa_link_image,f"{filename}{extension}")
+        file_path = os.path.join(folder_name, f"{filename}{extension}")
+        download_image(nasa_link_image, file_path)
 
 
 def main(): 
     load_dotenv()
-    count=os.environ.get("NASA_COUNT_IMAGE", 10)
+    count = os.environ.get("NASA_COUNT_IMAGE", 10)
     nasa_token = os.environ.get("NASA_TOKEN", "DEMO_KEY")
-    get_apod_image(nasa_token, count)
+    folder = os.environ.get("FOLDER_NAME", "images")
+    get_apod_image(nasa_token, count, folder)
 
     
 if __name__ == "__main__":
