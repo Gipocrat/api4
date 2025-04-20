@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from telegram.error import NetworkError
 
 
-def get_files(folder_name):
+def get_file(folder_name):
     files=os.listdir(folder_name)
     random.shuffle(files)
     for file in files:
@@ -23,7 +23,7 @@ def main():
     while True:
         folder_name= os.environ.get("FOLDER_NAME", "images")
         try:
-            file_path = get_files(folder_name)
+            file_path = get_file(folder_name)
             with open(file_path, 'rb') as photo:
                 bot.send_photo(chat_id=chat_id, photo=photo)
             sleep(time_sleep)

@@ -18,6 +18,7 @@ def main():
     load_dotenv()
     folder = os.environ.get("FOLDER_NAME", "images")
     launch_id = os.environ.get("SPACEX_LAUNCH_ID", "latest")
+    os.makedirs(folder, exist_ok=True)
     fetch_spacex_last_launch(launch_id, folder)
 
 

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 
-def get_epic_image(nasa_token, count, folder_name):
+def get_epic_images(nasa_token, count, folder_name):
     epic_url = 'https://api.nasa.gov/EPIC/api/natural/images'
     params = {"api_key": nasa_token, 'count': count}
     response = requests.get(epic_url, params=params)
@@ -25,7 +25,8 @@ def main():
     nasa_token = os.environ["NASA_TOKEN"]
     count = os.environ.get("NASA_COUNT_IMAGE", 10)
     folder = os.environ.get("FOLDER_NAME", "images")
-    get_epic_image(nasa_token, count, folder)
+    os.makedirs(folder, exist_ok=True)
+    get_epic_images(nasa_token, count, folder)
 
     
 if __name__ == "__main__":
