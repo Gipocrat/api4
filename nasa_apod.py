@@ -22,6 +22,8 @@ def get_apod_images(nasa_token, count, folder_name):
     for nasa_image in nasa_images:
         if nasa_image.get('media_type') == 'image':
             nasa_link_image = nasa_image.get('hdurl') or nasa_image.get('url') 
+        else:
+            continue
         filename, extension = get_extension(nasa_link_image)
         file_path = os.path.join(folder_name, f"{filename}{extension}")
         download_image(nasa_link_image, file_path)
@@ -31,7 +33,7 @@ def main():
     load_dotenv()
     count = os.environ.get("NASA_COUNT_IMAGE", 10)
     nasa_token = os.environ.get("NASA_TOKEN", "DEMO_KEY")
-    folder = os.environ.get("FOLDER_NAME", "images")
+    folder = os.environ.get("FOLDER_FOR_IMAGES", "images")
     os.makedirs(folder, exist_ok=True)
     get_apod_images(nasa_token, count, folder)
 

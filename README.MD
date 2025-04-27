@@ -35,7 +35,7 @@ python spacex.py
 NASA_TOKEN = "SZQJNyfQIFa7XXUIG7Z2Crd4n0ftA2QVIRGvRHQwRZN2"
 TG_TOKEN='76197101658:AAHJp9NpgO7uIhKbgn396L6_Z9lxMcGaS9g'
 TG_CHAT_ID='@ferkafiry'
-FOLDER_NAME='Укажите название папки в которую будут скачиваться фотографии'
+FOLDER_FOR_IMAGES='Укажите название папки в которую будут скачиваться фотографии'
 SPACEX_LAUNCH_ID="Укажите id запуска"
 TG_TIME_SLEEP="Укажите здесь задержку между отправкой фотографий в телеграмм канал(в секундах) "
 NASA_COUNT_IMAGE="Укажите количество желаемых фотографий которые будут скачаны"

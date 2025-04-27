@@ -22,9 +22,9 @@ def get_epic_images(nasa_token, count, folder_name):
 
 def main(): 
     load_dotenv()
-    nasa_token = os.environ["NASA_TOKEN"]
+    nasa_token = os.environ.get("NASA_TOKEN", "DEMO_KEY")
     count = os.environ.get("NASA_COUNT_IMAGE", 10)
-    folder = os.environ.get("FOLDER_NAME", "images")
+    folder = os.environ.get("FOLDER_FOR_IMAGES", "images")
     os.makedirs(folder, exist_ok=True)
     get_epic_images(nasa_token, count, folder)
 
